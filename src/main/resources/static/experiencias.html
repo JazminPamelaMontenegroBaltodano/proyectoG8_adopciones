@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencias de Adopción - Animali</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #b3d9e8;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #b3d9e8;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #000;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            background-color: #e6f5fa;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .card img {
+            border-radius: 15px 15px 0 0;
+            height: 200px; /* ajusta la altura de la imagen según sea necesario */
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .card-text {
+            font-size: 16px;
+            text-align: justify;
+        }
+        footer {
+            background-color: darkblue;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="index.html">Animali</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="registro.html">Registrarme</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col text-center">
+                <h2>Experiencias de Adopción</h2>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/cat.jpg" class="card-img-top" alt="Gato">
+            <div class="card-body">
+                <h3 class="card-title">Historia de Luna</h3>
+                <p class="card-text">
+                    Luna llegó a nuestro hogar hace un año y desde entonces ha llenado nuestras vidas de alegría. Su llegada fue como un rayo de sol en días nublados, llenando cada rincón de la casa con su energía juguetona y su ternura inigualable. Desde el primer día, nos ha enseñado el verdadero significado de la lealtad y el amor incondicional. Cada noche ronronea junto a nosotros, recordándonos lo especial que es tenerla en nuestras vidas. Luna no solo es una gata, es parte de nuestra familia, y estamos agradecidos por cada momento compartido juntos.
+                </p>
+                <div class="likes">123 Likes</div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <img src="img/dog.jpg" class="card-img-top" alt="Perro">
+            <div class="card-body">
+                <h3 class="card-title">La historia de Max</h3>
+                <p class="card-text">
+                    Max fue rescatado de las calles, donde enfrentaba cada día con valentía y determinación. Cuando llegó a nuestro hogar, estaba lleno de miedo y desconfianza, pero con el tiempo, su corazón noble y su naturaleza amorosa comenzaron a brillar. A través del cuidado constante y el cariño incondicional, Max se transformó en un miembro querido de nuestra familia. Su historia es un recordatorio poderoso de la resiliencia animal y del impacto positivo que podemos tener cuando elegimos brindar amor y refugio a aquellos que lo necesitan. Max no solo encontró un hogar, sino que también nos enseñó la verdadera significación de la gratitud y el afecto mutuo.
+                </p>
+                <div class="likes">87 Likes</div>
+            </div>
+        </div>
+        <!-- Puedes agregar más tarjetas de experiencias según sea necesario -->
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Crear publicacion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="ccs/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <form action="/crearPublicacion" method="post" enctype="multipart/form-data">
+            <h2>Crear Publicación</h2>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    En adopcion
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Quiero adoptar
+                </label>
+            </div>
+            <br>
+
+            <label for="imagen">Imagen:</label>
+            <img src="..." class="img-thumbnail" alt="...">
+            <br>
+            <input type="file" id="imagen" name="imagen" accept="image/*" required>
+            <br><br><br>
+            <label for="contenido">Descripcion</label>
+            <textarea id="contenido" name="contenido" rows="10" required></textarea>
+
+
+            <input type="submit" value="Publicar">
+            <input type="submit" value="Cancelar">
+        </form>
+
+    </body>
+</html>

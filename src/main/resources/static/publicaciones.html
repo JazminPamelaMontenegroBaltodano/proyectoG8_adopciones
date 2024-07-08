@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicaciones - Animali</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #b3d9e8;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #b3d9e8;
+        }
+        .navbar-brand, .navbar-nav {
+            color: #000;
+        }
+        .publicacion {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .publicacion img {
+            float: left;
+            margin-right: 20px;
+            max-width: 200px;
+            border-radius: 8px;
+        }
+        .publicacion .info {
+            overflow: hidden;
+        }
+        .publicacion .info h3 {
+            margin-top: 0;
+        }
+        .publicacion .info p {
+            margin-bottom: 10px;
+        }
+        .publicacion .info .ver-btn {
+            float: right;
+            background-color: darkblue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .publicacion .info .ver-btn:hover {
+            background-color: skyblue;
+        }
+        footer {
+            background-color: darkblue;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="index.html">Animali</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="registro.html">Registrarme</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="publicaciones">
+            <div class="container mt-4">
+                <h2>Publicaciones</h2>
+
+                <div class="publicacion">
+                    <img src="img/gato.jpg" alt="Gato">
+                    <div class="info">
+                        <h3>Historia de Luna</h3>
+                        <p><strong>Nombre:</strong> Luna</p>
+                        <p><strong>Edad:</strong> 3 años</p>
+                        <p><strong>Raza:</strong> Siamesa</p>
+                        <p><strong>Ubicación:</strong> Ciudad de México</p>
+                        <a href="#" class="ver-btn">Ver Publicación</a>
+                    </div>
+                </div>
+
+                <div class="publicacion">
+                    <img src="img/perro.jpg" alt="Perro">
+                    <div class="info">
+                        <h3>La historia de Max</h3>
+                        <p><strong>Nombre:</strong> Max</p>
+                        <p><strong>Edad:</strong> 5 años</p>
+                        <p><strong>Raza:</strong> Labrador</p>
+                        <p><strong>Ubicación:</strong> Buenos Aires, Argentina</p>
+                        <a href="#" class="ver-btn">Ver Publicación</a>
+                    </div>
+                </div>
+                <!-- Agregar más publicaciones según sea necesario -->
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
