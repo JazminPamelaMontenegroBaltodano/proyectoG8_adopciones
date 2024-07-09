@@ -16,17 +16,22 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user) {
-        userService.registerUser(user);
-        return "Registro exitoso!";
+        try {
+            userService.registerUser(user);
+            return "registro-exitoso";
+        } catch (Exception e) {
+            // Log the error and return an error page
+            e.printStackTrace();
+            return "error";
+        }
     }
 
     @PostMapping("/login")
     public String loginUser(@ModelAttribute User loginUser) {
         Optional<User> user = userService.loginUser(loginUser.getEmail(), loginUser.getPassword());
         if (user.isPresent()) {
-            return "Inicio de sesión exitoso!";
+            return "inicio-exitoso";
         }
-        return "Error en inicio de sesión!";
+        return "error-inicio-sesion";
     }
 }
-

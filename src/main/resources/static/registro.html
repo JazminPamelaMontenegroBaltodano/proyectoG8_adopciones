@@ -90,6 +90,12 @@
                     jsonData[key] = value;
                 });
 
+                // Validación de la confirmación de la contraseña
+                if (jsonData.password !== document.getElementById('confirmarContraseña').value) {
+                    alert('Las contraseñas no coinciden. Por favor, inténtelo de nuevo.');
+                    return;
+                }
+
                 fetch('/user/register', {
                     method: 'POST',
                     headers: {
@@ -97,13 +103,20 @@
                     },
                     body: JSON.stringify(jsonData)
                 })
-                        .then(response => response.text())
-                        .then(data => {
-                            alert(data);
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    alert(data);
+                    window.location.href = "/registro-exitoso.html";
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al registrar el usuario');
+                });
             }
         </script>
     </body>

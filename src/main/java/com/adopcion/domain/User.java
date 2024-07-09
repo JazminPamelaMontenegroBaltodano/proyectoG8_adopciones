@@ -1,6 +1,5 @@
 package com.adopcion.domain;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class User {
     private String nombre;
     private String apellidos;
 
-    @Column(name = "nombre_usuario") // Asegúrate de que este nombre coincida con el nombre del campo en la base de datos
+    @Column(name = "nombre_usuario")
     private String nombreUsuario;
 
     private String email;
