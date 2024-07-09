@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animali - Adopción</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="ruta/a/tu/hoja/estilos.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#showFilters").click(function(){
+                $("#filterForm").toggle();
+            });
+        });
+
+        function redirectToPublications() {
+            window.location.href = "publicaciones.html";
+        }
+    </script>
     <style>
         body {
             background-color: #b3d9e8;
@@ -49,7 +61,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Animali</a>
+        <a class="navbar-brand" href="index.html">Animali</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -70,16 +82,71 @@
             <div class="col text-center">
                 <button class="btn btn-outline-primary">Utilizar ubicación Actual</button>
                 <button class="btn btn-outline-primary">Costa Rica</button>
-                <button class="btn btn-outline-primary">Ver filtros de búsqueda</button>
+                <button id="showFilters" class="btn btn-outline-primary">Ver filtros de búsqueda</button>
             </div>
         </div>
 
+        <div id="filterForm" style="display: none;">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputAge">Edad</label>
+                        <input type="number" class="form-control" id="inputAge" placeholder="Edad" min="0">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputHealth">Estado de Salud</label>
+                        <select class="form-control" id="inputHealth">
+                            <option value="">Seleccionar...</option>
+                            <option value="saludable">Saludable</option>
+                            <option value="enfermo">Enfermo</option>
+                            <option value="golpeado">Golpeado</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputLocation">Ubicación</label>
+                        <select class="form-control" id="inputLocation">
+                            <option value="">Seleccionar...</option>
+                            <option value="San José">San José</option>
+                            <option value="Alajuela">Alajuela</option>
+                            <option value="Cartago">Cartago</option>
+                            <option value="Heredia">Heredia</option>
+                            <option value="Guanacaste">Guanacaste</option>
+                            <option value="Puntarenas">Puntarenas</option>
+                            <option value="Limón">Limón</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCondition">Condición de Hogar</label>
+                        <select class="form-control" id="inputCondition">
+                            <option value="">Seleccionar...</option>
+                            <option value="callejero">Callejero</option>
+                            <option value="casa cuna">Casa Cuna</option>
+                            <option value="en adopción">En Adopción</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="redirectToPublications()">Buscar</button>
+            </form>
+        </div>
+        
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="data:image/jpeg;base64,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" class="d-block w-100" alt="Mascotas">
+                    <img src="Images/perro.jpg" class="d-block w-100" alt="Carrusel 1">
                 </div>
-                <!-- aqui se puede añadir más elementos de carrusel -->
+                <div class="carousel-item">
+                    <img src="Images/perros.jpeg" class="d-block w-100" alt="Carrusel 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="Images/registro.jpg" class="d-block w-100" alt="Carrusel 3">
+                </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

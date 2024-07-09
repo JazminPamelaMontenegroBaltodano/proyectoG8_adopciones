@@ -1,258 +1,185 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicaciones - Animali</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #b3d9e8;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            background-color: #b3d9e8;
-        }
-        .navbar-brand, .navbar-nav {
-            color: #000;
-        }
-        .publicacion {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            padding: 20px;
-            overflow: hidden;
-        }
-        .publicacion img {
-            float: left;
-            margin-right: 20px;
-            max-width: 200px;
-            border-radius: 8px;
-        }
-        .publicacion .info {
-            overflow: hidden;
-        }
-        .publicacion .info h3 {
-            margin-top: 0;
-        }
-        .publicacion .info p {
-            margin-bottom: 10px;
-        }
-        .publicacion .info .ver-btn {
-            float: right;
-            background-color: darkblue;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .publicacion .info .ver-btn:hover {
-            background-color: skyblue;
-        }
-        footer {
-            background-color: darkblue;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        /* Estilos para el botón Crear Publicación */
-        #crearPublicacionBtn {
-            position: absolute;
-            top: 60px; /* Ajusta esta posición según sea necesario */
-            right: 20px;
-            z-index: 1000; /* Asegura que esté encima de otros elementos */
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Publicaciones - Animali</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="ruta/a/tu/hoja/estilos.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #b3d9e8;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+            }
+            .navbar {
+                background-color: #b3d9e8;
+            }
+            .navbar-brand, .navbar-nav .nav-link {
+                color: #000;
+            }
+            .card {
+                border: none;
+                border-radius: 15px;
+                background-color: #e6f5fa;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                margin-bottom: 20px; /* Añadido espacio entre las tarjetas */
+            }
+            .card img {
+                border-radius: 15px 15px 0 0;
+                height: 270px; /* ajusta la altura de la imagen */
+                width: 100%; /* ajusta el ancho de la imagen */
+                object-fit: cover;
+                margin: 0 auto;
+            }
+            .card-body {
+                padding: 20px;
+            }
+            .card-title {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .card-text {
+                font-size: 16px;
+                text-align: justify;
+            }
+            .likes {
+                font-size: 14px;
+                color: #666;
+                text-align: right;
+            }
+            .seller-info {
+                display: none;
+                font-size: 14px;
+                color: #666;
+                margin-top: 10px;
+                text-align: left;
+            }
+            footer {
+                background-color: darkblue;
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body class="publicacion">
 
-        /* Estilos para el modal */
-        .modal {
-            display: none; /* Ocultar por defecto */
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 8px;
-        }
-
-        .modal-content h2 {
-            margin-top: 0;
-        }
-
-        .modal-content label {
-            font-weight: bold;
-        }
-
-        .modal-content input[type=text],
-        .modal-content input[type=file],
-        .modal-content textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .modal-content input[type=file] {
-            padding: 7px;
-        }
-
-        .modal-content textarea {
-            height: 100px;
-        }
-
-        .modal-content button {
-            background-color: darkblue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .modal-content button:hover {
-            background-color: skyblue;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html">Animali</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="registro.html">Registrarme</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="main-content">
-        <section id="publicaciones">
-            <div class="container mt-4">
-                <h2>Publicaciones</h2>
-
-                <!-- Botón Crear Publicación -->
-                <button id="crearPublicacionBtn" onclick="openModal()">Crear Publicación</button>
-
-                <div class="publicacion">
-                    <img src="img/gato.jpg" alt="Gato">
-                    <div class="info">
-                        <h3>Historia de Luna</h3>
-                        <p><strong>Nombre:</strong> Luna</p>
-                        <p><strong>Edad:</strong> 3 años</p>
-                        <p><strong>Raza:</strong> Siamesa</p>
-                        <p><strong>Ubicación:</strong> Ciudad de México</p>
-                        <a href="#" class="ver-btn">Ver Publicación</a>
-                    </div>
-                </div>
-
-                <div class="publicacion">
-                    <img src="img/perro.jpg" alt="Perro">
-                    <div class="info">
-                        <h3>La historia de Max</h3>
-                        <p><strong>Nombre:</strong> Max</p>
-                        <p><strong>Edad:</strong> 5 años</p>
-                        <p><strong>Raza:</strong> Labrador</p>
-                        <p><strong>Ubicación:</strong> Buenos Aires, Argentina</p>
-                        <a href="#" class="ver-btn">Ver Publicación</a>
-                    </div>
-                </div>
-                <!-- Agregar más publicaciones según sea necesario -->
-
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="index.html">Animali</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="registro.html">Registrarme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
             </div>
-        </section>
-    </main>
+        </nav>
 
-    <footer>
-        <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Modal para el formulario de crear publicación -->
-    <div id="crearPublicacionModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Crear Publicación</h2>
-            <form id="crearPublicacionForm">
-                <label for="nombre">Nombre del Animal:</label><br>
-                <input type="text" id="nombre" name="nombre" required><br>
-                <label for="edad">Edad:</label><br>
-                <input type="text" id="edad" name="edad" required><br>
-                <label for="raza">Raza:</label><br>
-                <input type="text" id="raza" name="raza" required><br>
-                <label for="ubicacion">Ubicación:</label><br>
-                <input type="text" id="ubicacion" name="ubicacion" required><br>
-                <label for="imagen">Imagen:</label><br>
-                <input type="file" id="imagen" name="imagen" accept="image/*" required><br>
-                <label for="comentario">Comentario:</label><br>
-                <textarea id="comentario" name="comentario" rows="4" required></textarea><br>
-                <button id="finalizarBtn" onclick="finalizarPublicacion()">Finalizar</button>
-            </form>
+        <div class="container mt-4">
+            <div class="row mt-4">
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <img src="Images/rescate1.jpg" class="card-img-top" alt="Publicacion 1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Rescatamos a Callejero</h5>
+                            <p class="card-text">
+                                Callejero fue encontrado en un estado deplorable, abandonado y sin fuerzas para seguir adelante. Gracias al amor y al cuidado de nuestros voluntarios, logró recuperarse y encontrar un hogar lleno de cariño. Ahora, Callejero disfruta de una vida llena de juegos y mimos, demostrando que nunca es tarde para tener una segunda oportunidad. Su transformación es un testimonio del poder del amor y la dedicación.
+                            </p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
+                            <div class="seller-info">
+                                <p><strong>Nombre:</strong> Juan Pérez</p>
+                                <p><strong>Teléfono:</strong> +506 1234 5678</p>
+                                <p><strong>Correo electrónico:</strong> juan.perez@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <img src="Images/rescate2.jpg" class="card-img-top" alt="Publicacion 2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Segunda oportunidad</h5>
+                            <p class="card-text">
+                                A Max lo encontramos en un refugio, esperando su oportunidad de ser amado. Desde el momento en que llegó a su nuevo hogar, su vida cambió por completo. Con paciencia y amor, Max ha dejado atrás sus días de tristeza y miedo. Hoy, Max es un perro feliz y lleno de vida que disfruta de cada momento al máximo, agradecido por la segunda oportunidad que le fue dada.
+                            </p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
+                            <div class="seller-info">
+                                <p><strong>Nombre:</strong> María López</p>
+                                <p><strong>Teléfono:</strong> +506 8765 4321</p>
+                                <p><strong>Correo electrónico:</strong> maria.lopez@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <img src="Images/rescate4.jpg" class="card-img-top" alt="Publicacion 3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Mas feliz que nunca</h5>
+                            <p class="card-text">
+                                Luna era una gata callejera que sobrevivía como podía en las calles. Su rescate fue un milagro que le permitió conocer el amor de una familia. Hoy, Luna vive rodeada de amor y cuidados, disfrutando de un hogar donde es tratada como una reina. Su felicidad es evidente en cada ronroneo y cada caricia que ofrece, recordándonos que cada vida tiene un valor incalculable.
+                            </p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
+                            <div class="seller-info">
+                                <p><strong>Nombre:</strong> Carlos Ramírez</p>
+                                <p><strong>Teléfono:</strong> +506 2345 6789</p>
+                                <p><strong>Correo electrónico:</strong> carlos.ramirez@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <img src="Images/rescate3.jpg" class="card-img-top" alt="Publicacion 4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Antes y despues</h5>
+                            <p class="card-text">
+                                Antes de su rescate, Toby vivía en las calles, expuesto a los peligros y a la indiferencia. Su adopción transformó su vida por completo. Ahora, Toby es un perro amado y cuidado que ha dejado atrás los días de sufrimiento. Su historia de antes y después es una prueba de que cada animal merece una vida digna y feliz, y de que con un poco de ayuda, podemos hacer una gran diferencia.
+                            </p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
+                            <div class="seller-info">
+                                <p><strong>Nombre:</strong> Ana Martínez</p>
+                                <p><strong>Teléfono:</strong> +506 3456 7890</p>
+                                <p><strong>Correo electrónico:</strong> ana.martinez@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <footer>
+            <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
+        </footer>
 
-    <script>
-        function openModal() {
-            document.getElementById('crearPublicacionModal').style.display = 'block';
-        }
+        <script>
+            function toggleSellerInfo(button) {
+                var sellerInfo = button.nextElementSibling;
+                if (sellerInfo.style.display === "none" || sellerInfo.style.display === "") {
+                    sellerInfo.style.display = "block";
+                } else {
+                    sellerInfo.style.display = "none";
+                }
+            }
+        </script>
 
-        function closeModal() {
-            document.getElementById('crearPublicacionModal').style.display = 'none';
-        }
-
-        function finalizarPublicacion() {
-            // Aquí puedes agregar la lógica para validar y enviar el formulario
-            // Por ahora solo se cierra el modal como ejemplo
-            closeModal();
-            alert('Publicación creada correctamente.');
-        }
-    </script>
-
-</body>
+    </body>
 </html>
