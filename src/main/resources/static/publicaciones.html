@@ -1,185 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Publicaciones - Animali</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="ruta/a/tu/hoja/estilos.css" rel="stylesheet">
-        <style>
-            body {
-                background-color: #b3d9e8;
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                margin: 0;
-                padding: 0;
-            }
-            .navbar {
-                background-color: #b3d9e8;
-            }
-            .navbar-brand, .navbar-nav .nav-link {
-                color: #000;
-            }
-            .card {
-                border: none;
-                border-radius: 15px;
-                background-color: #e6f5fa;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                margin-bottom: 20px; /* Añadido espacio entre las tarjetas */
-            }
-            .card img {
-                border-radius: 15px 15px 0 0;
-                height: 270px; /* ajusta la altura de la imagen */
-                width: 100%; /* ajusta el ancho de la imagen */
-                object-fit: cover;
-                margin: 0 auto;
-            }
-            .card-body {
-                padding: 20px;
-            }
-            .card-title {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: center;
-                margin-bottom: 15px;
-            }
-            .card-text {
-                font-size: 16px;
-                text-align: justify;
-            }
-            .likes {
-                font-size: 14px;
-                color: #666;
-                text-align: right;
-            }
-            .seller-info {
-                display: none;
-                font-size: 14px;
-                color: #666;
-                margin-top: 10px;
-                text-align: left;
-            }
-            footer {
-                background-color: darkblue;
-                color: #fff;
-                text-align: center;
-                padding: 10px;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body class="publicacion">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicaciones - Animali</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #b3d9e8;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #b3d9e8;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #000;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            background-color: #e6f5fa;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .card img {
+            border-radius: 15px 15px 0 0;
+            height: 270px;
+            width: 100%;
+            object-fit: cover;
+            margin: 0 auto;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .card-text {
+            font-size: 16px;
+            text-align: justify;
+        }
+        .likes {
+            font-size: 14px;
+            color: #666;
+            text-align: right;
+        }
+        .seller-info {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            text-align: left;
+        }
+        footer {
+            background-color: darkblue;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="publicacion">
 
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html">Animali</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="registro.html">Registrarme</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="index.html">Animali</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="registro.html">Registrarme</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-        <div class="container mt-4">
-            <div class="row mt-4">
-                <div class="col-md-12 mb-4">
-                    <div class="card">
-                        <img src="Images/rescate1.jpg" class="card-img-top" alt="Publicacion 1">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Rescatamos a Callejero</h5>
-                            <p class="card-text">
-                                Callejero fue encontrado en un estado deplorable, abandonado y sin fuerzas para seguir adelante. Gracias al amor y al cuidado de nuestros voluntarios, logró recuperarse y encontrar un hogar lleno de cariño. Ahora, Callejero disfruta de una vida llena de juegos y mimos, demostrando que nunca es tarde para tener una segunda oportunidad. Su transformación es un testimonio del poder del amor y la dedicación.
-                            </p>
-                            <a href="#" class="btn btn-primary">Ver más</a>
-                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
-                            <div class="seller-info">
-                                <p><strong>Nombre:</strong> Juan Pérez</p>
-                                <p><strong>Teléfono:</strong> +506 1234 5678</p>
-                                <p><strong>Correo electrónico:</strong> juan.perez@example.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 mb-4">
-                    <div class="card">
-                        <img src="Images/rescate2.jpg" class="card-img-top" alt="Publicacion 2">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Segunda oportunidad</h5>
-                            <p class="card-text">
-                                A Max lo encontramos en un refugio, esperando su oportunidad de ser amado. Desde el momento en que llegó a su nuevo hogar, su vida cambió por completo. Con paciencia y amor, Max ha dejado atrás sus días de tristeza y miedo. Hoy, Max es un perro feliz y lleno de vida que disfruta de cada momento al máximo, agradecido por la segunda oportunidad que le fue dada.
-                            </p>
-                            <a href="#" class="btn btn-primary">Ver más</a>
-                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
-                            <div class="seller-info">
-                                <p><strong>Nombre:</strong> María López</p>
-                                <p><strong>Teléfono:</strong> +506 8765 4321</p>
-                                <p><strong>Correo electrónico:</strong> maria.lopez@example.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 mb-4">
-                    <div class="card">
-                        <img src="Images/rescate4.jpg" class="card-img-top" alt="Publicacion 3">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Mas feliz que nunca</h5>
-                            <p class="card-text">
-                                Luna era una gata callejera que sobrevivía como podía en las calles. Su rescate fue un milagro que le permitió conocer el amor de una familia. Hoy, Luna vive rodeada de amor y cuidados, disfrutando de un hogar donde es tratada como una reina. Su felicidad es evidente en cada ronroneo y cada caricia que ofrece, recordándonos que cada vida tiene un valor incalculable.
-                            </p>
-                            <a href="#" class="btn btn-primary">Ver más</a>
-                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
-                            <div class="seller-info">
-                                <p><strong>Nombre:</strong> Carlos Ramírez</p>
-                                <p><strong>Teléfono:</strong> +506 2345 6789</p>
-                                <p><strong>Correo electrónico:</strong> carlos.ramirez@example.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 mb-4">
-                    <div class="card">
-                        <img src="Images/rescate3.jpg" class="card-img-top" alt="Publicacion 4">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Antes y despues</h5>
-                            <p class="card-text">
-                                Antes de su rescate, Toby vivía en las calles, expuesto a los peligros y a la indiferencia. Su adopción transformó su vida por completo. Ahora, Toby es un perro amado y cuidado que ha dejado atrás los días de sufrimiento. Su historia de antes y después es una prueba de que cada animal merece una vida digna y feliz, y de que con un poco de ayuda, podemos hacer una gran diferencia.
-                            </p>
-                            <a href="#" class="btn btn-primary">Ver más</a>
-                            <button class="btn btn-info mt-2" onclick="toggleSellerInfo(this)">Contactar al vendedor</button>
-                            <div class="seller-info">
-                                <p><strong>Nombre:</strong> Ana Martínez</p>
-                                <p><strong>Teléfono:</strong> +506 3456 7890</p>
-                                <p><strong>Correo electrónico:</strong> ana.martinez@example.com</p>
-                            </div>
-                        </div>
+<div class="container mt-4">
+    <div class="row mt-4">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <img src="Images/rescate1.jpg" class="card-img-top" alt="Publicacion 1">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Rescatamos a Callejero</h5>
+                    <p class="card-text">
+                        Callejero fue encontrado en un estado deplorable, abandonado y sin fuerzas para seguir adelante. Gracias al amor y al cuidado de nuestros voluntarios, logró recuperarse y encontrar un hogar lleno de cariño. Ahora, Callejero disfruta de una vida llena de juegos y mimos, demostrando que nunca es tarde para tener una segunda oportunidad. Su transformación es un testimonio del poder del amor y la dedicación.
+                    </p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                    <a href="#seller-info-1" class="btn btn-info mt-2">Contacto abajo</a>
+                    <div class="seller-info" id="seller-info-1">
+                        <p><strong>Nombre:</strong> Juan Pérez</p>
+                        <p><strong>Teléfono:</strong> +506 1234 5678</p>
+                        <p><strong>Correo electrónico:</strong> juan.perez@example.com</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <img src="Images/rescate2.jpg" class="card-img-top" alt="Publicacion 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Segunda oportunidad</h5>
+                    <p class="card-text">
+                        A Max lo encontramos en un refugio, esperando su oportunidad de ser amado. Desde el momento en que llegó a su nuevo hogar, su vida cambió por completo. Con paciencia y amor, Max ha dejado atrás sus días de tristeza y miedo. Hoy, Max es un perro feliz y lleno de vida que disfruta de cada momento al máximo, agradecido por la segunda oportunidad que le fue dada.
+                    </p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                    <a href="#seller-info-2" class="btn btn-info mt-2">Contacto abajo</a>
+                    <div class="seller-info" id="seller-info-2">
+                        <p><strong>Nombre:</strong> María López</p>
+                        <p><strong>Teléfono:</strong> +506 8765 4321</p>
+                        <p><strong>Correo electrónico:</strong> maria.lopez@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <img src="Images/rescate4.jpg" class="card-img-top" alt="Publicacion 3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Mas feliz que nunca</h5>
+                    <p class="card-text">
+                        Luna era una gata callejera que sobrevivía como podía en las calles. Su rescate fue un milagro que le permitió conocer el amor de una familia. Hoy, Luna vive rodeada de amor y cuidados, disfrutando de un hogar donde es tratada como una reina. Su felicidad es evidente en cada ronroneo y cada caricia que ofrece, recordándonos que cada vida tiene un valor incalculable.
+                    </p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                    <a href="#seller-info-3" class="btn btn-info mt-2">Contacto abajo</a>
+                    <div class="seller-info" id="seller-info-3">
+                        <p><strong>Nombre:</strong> Carlos Ramírez</p>
+                        <p><strong>Teléfono:</strong> +506 2345 6789</p>
+                        <p><strong>Correo electrónico:</strong> carlos.ramirez@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <img src="Images/rescate3.jpg" class="card-img-top" alt="Publicacion 4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Antes y despues</h5>
+                    <p class="card-text">
+                        Antes de su rescate, Toby vivía en las calles, expuesto a los peligros y a la indiferencia. Su adopción transformó su vida por completo. Ahora, Toby es un perro amado y cuidado que ha dejado atrás los días de sufrimiento. Su historia de antes y después es una prueba de que cada animal merece una vida digna y feliz, y de que con un poco de ayuda, podemos hacer una gran diferencia.
+                    </p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                    <a href="#seller-info-4" class="btn btn-info mt-2">Contacto abajo</a>
+                    <div class="seller-info" id="seller-info-4">
+                        <p><strong>Nombre:</strong> Ana Martínez</p>
+                        <p><strong>Teléfono:</strong> +506 3456 7890</p>
+                        <p><strong>Correo electrónico:</strong> ana.martinez@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <footer>
-            <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
-        </footer>
+<footer>
+    <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
+</footer>
 
-        <script>
-            function toggleSellerInfo(button) {
-                var sellerInfo = button.nextElementSibling;
-                if (sellerInfo.style.display === "none" || sellerInfo.style.display === "") {
-                    sellerInfo.style.display = "block";
-                } else {
-                    sellerInfo.style.display = "none";
-                }
-            }
-        </script>
-
-    </body>
+</body>
 </html>
