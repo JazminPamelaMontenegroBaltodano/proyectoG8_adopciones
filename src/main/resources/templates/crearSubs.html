@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Suscripciones - Animali</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #b3d9e8;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+            }
+            .navbar {
+                background-color: #b3d9e8;
+            }
+            .navbar-brand, .navbar-nav .nav-link {
+                color: #000;
+            }
+            .card {
+                border: none;
+                border-radius: 15px;
+                background-color: #e6f5fa;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                margin-bottom: 20px;
+            }
+            .card-body {
+                padding: 20px;
+            }
+            .card-title {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .card-text {
+                font-size: 16px;
+                text-align: justify;
+            }
+            footer {
+                background-color: darkblue;
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body class="subscripciones">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/index.html">Animali</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/registro.html">Registrarme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/inicio_sesion.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container mt-4">
+            <div class="row mt-4">
+                <!-- Opción Bronce -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Opción Bronce</h5>
+                            <p class="card-text">
+                                <strong>Precio:</strong> $1/mes
+                                <br><strong>Beneficios:</strong>
+                            <ul>
+                                <li>Acceso básico a la plataforma</li>
+                                <li>Soporte vía email</li>
+                            </ul>
+                            </p>
+                            <button class="btn btn-primary" onclick="suscribirse('Bronce')">Suscribirse</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Opción Plata -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Opción Plata</h5>
+                            <p class="card-text">
+                                <strong>Precio:</strong> $3/mes
+                                <br><strong>Beneficios:</strong>
+                            <ul>
+                                <li>Todos los beneficios de Bronce</li>
+                                <li>Acceso a contenido exclusivo</li>
+                                <li>Descuentos en eventos</li>
+                            </ul>
+                            </p>
+                            <button class="btn btn-primary" onclick="suscribirse('Plata')">Suscribirse</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Opción Oro -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Opción Oro</h5>
+                            <p class="card-text">
+                                <strong>Precio:</strong> $5/mes
+                                <br><strong>Beneficios:</strong>
+                            <ul>
+                                <li>Todos los beneficios de Plata</li>
+                                <li>Acceso prioritario a nuevas funcionalidades</li>
+                                <li>Soporte telefónico</li>
+                                <li>Regalo anual</li>
+                            </ul>
+                            </p>
+                            <button class="btn btn-primary" onclick="suscribirse('Oro')">Suscribirse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <button class="btn btn-danger" onclick="cancelarSuscripcion()">Cancelar Suscripción</button>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button class="btn btn-info" onclick="verHistorial()">Ver Historial</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
+        </footer>
+
+        <!-- Modal de Suscripción -->
+        <div class="modal fade" id="modalSuscripcion" tabindex="-1" aria-labelledby="modalSuscripcionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSuscripcionLabel">Suscripción Confirmada</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Te has suscrito al plan <span id="planSeleccionado"></span> exitosamente.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="continuar()">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Cancelación -->
+        <div class="modal fade" id="modalCancelacion" tabindex="-1" aria-labelledby="modalCancelacionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCancelacionLabel">Suscripción Cancelada</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tu suscripción ha sido cancelada exitosamente.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Historial -->
+        <div class="modal fade" id="modalHistorial" tabindex="-1" aria-labelledby="modalHistorialLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalHistorialLabel">Historial de Suscripciones</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="contenidoHistorial">
+                        <!-- Aquí se cargará el contenido del historial -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+                            function suscribirse(plan) {
+                                document.getElementById('planSeleccionado').innerText = plan;
+                                localStorage.setItem('suscripcion', plan);
+                                $('#modalSuscripcion').modal('show');
+                            }
+
+                            function continuar() {
+                                $('#modalSuscripcion').modal('hide');
+                                $.post('/subscriptions', {plan: localStorage.getItem('suscripcion')}, function () {
+                                    // Manejar la respuesta si es necesario
+                                });
+                            }
+
+                            function cancelarSuscripcion() {
+                                localStorage.removeItem('suscripcion');
+                                $('#modalCancelacion').modal('show');
+                            }
+
+                            function verHistorial() {
+                                window.location.href = '/subscriptions/history';
+                            }
+
+                            document.addEventListener('DOMContentLoaded', function () {
+                                var suscripcion = localStorage.getItem('suscripcion');
+                                if (suscripcion) {
+                                    var subscriptionBadge = document.getElementById('subscriptionBadge');
+                                    subscriptionBadge.innerText = 'Suscripción: ' + suscripcion;
+                                    subscriptionBadge.style.display = 'block';
+                                }
+                            });
+        </script>
+    </body>
+</html>

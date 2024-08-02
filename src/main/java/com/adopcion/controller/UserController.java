@@ -2,6 +2,7 @@ package com.adopcion.controller;
 
 import com.adopcion.domain.User;
 import com.adopcion.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,18 +21,24 @@ public class UserController {
             userService.registerUser(user);
             return "registro-exitoso";
         } catch (Exception e) {
-            // Log the error and return an error page
             e.printStackTrace();
             return "error";
         }
     }
 
     @PostMapping("/login")
-    public String loginUser(@ModelAttribute User loginUser) {
+    public String loginUser(@ModelAttribute User loginUser, HttpSession session) {
         Optional<User> user = userService.loginUser(loginUser.getEmail(), loginUser.getPassword());
         if (user.isPresent()) {
-            return "inicio-exitoso";
+            session.setAttribute("loggedInUser", user.get());
+            return "redirect:/";
         }
         return "error-inicio-sesion";
+    }
+
+    @GetMapping("/logout")
+    public String logoutUser(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Historial de Suscripciones</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-4">
+            <h2>Historial de Suscripciones</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Plan</th>
+                        <th>Fecha de Inicio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="subs : ${history}">
+                        <td th:text="${subs.id}">1</td>
+                        <td th:text="${subs.plan}">Plan</td>
+                        <td th:text="${subs.startDate}">2024-01-01</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

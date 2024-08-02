@@ -24,11 +24,11 @@ public class User {
     private String email;
     private String password;
 
-    // Constructor vacío necesario para JPA
+
     public User() {
     }
 
-    // Getters y Setters
+    
     public Long getId() {
         return id;
     }
