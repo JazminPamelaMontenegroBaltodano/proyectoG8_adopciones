@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Favoritos</title>
+</head>
+<body>
+    <h1>Favoritos</h1>
+    <a href="/favoritos/crear">Agregar Nuevo Favorito</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Usuario</th>
+                <th>ID Publicación</th>
+                <th>Fecha Agregado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="favorito : ${favoritos}">
+                <td th:text="${favorito.id}"></td>
+                <td th:text="${favorito.usuario.id}"></td>
+                <td th:text="${favorito.publicacion.id}"></td>
+                <td th:text="${favorito.fechaAgregado}"></td>
+                <td>
+                    <a th:href="@{/favoritos/editar/{id}(id=${favorito.id})}">Editar</a>
+                    <a th:href="@{/favoritos/eliminar/{id}(id=${favorito.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Favorito</title>
+</head>
+<body>
+    <h1>Agregar Favorito</h1>
+    <form action="/favoritos/guardar" method="post" th:object="${favorito}">
+        <label for="usuario">ID Usuario:</label>
+        <input type="text" id="usuario" name="usuario" th:field="*{usuario.id}" required>
+        <br>
+        <label for="publicacion">ID Publicación:</label>
+        <input type="text" id="publicacion" name="publicacion" th:field="*{publicacion.id}" required>
+        <br>
+        <label for="fechaAgregado">Fecha Agregado:</label>
+        <input type="datetime-local" id="fechaAgregado" name="fechaAgregado" th:field="*{fechaAgregado}">
+        <br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nueva Experiencia - Animali</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                background-color: #b3d9e8;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+            }
+            .navbar {
+                background-color: #b3d9e8;
+            }
+            .navbar-brand, .navbar-nav .nav-link {
+                color: #000;
+            }
+            .container {
+                flex: 1;
+                padding-bottom: 20px;
+            }
+            .card {
+                border: none;
+                border-radius: 15px;
+                background-color: #e6f5fa;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                margin-bottom: 20px;
+            }
+            .card img {
+                border-radius: 15px 15px 0 0;
+                height: 150px;
+                width: 250px;
+                object-fit: cover;
+                margin: 0 auto;
+            }
+            .card-body {
+                padding: 20px;
+            }
+            .card-title {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .card-text {
+                font-size: 16px;
+                text-align: justify;
+            }
+            .likes, .comments {
+                font-size: 14px;
+                color: #666;
+            }
+            .like-btn {
+                color: #007bff;
+                cursor: pointer;
+                font-size: 14px;
+                border: none;
+                background: none;
+                padding: 0;
+            }
+            .comment-section {
+                margin-top: 20px;
+            }
+            .comment-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .comment-list {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .comment-list li {
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            footer {
+                background-color: darkblue;
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="index.html">Animali</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="registro.html">Registrarme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container mt-4">
+            <h2 class="text-center">Nueva Experiencia de Adopción</h2>
+            <form action="exp_exitosa.html" method="POST" class="mt-4">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="experiencia">Tu Experiencia</label>
+                    <textarea class="form-control" id="experiencia" name="experiencia" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Experiencia</button>
+            </form>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Adopción de Gatos y Perros. Todos los derechos reservados.</p>
+        </footer>
+
+    </body>
+</html>

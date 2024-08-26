@@ -6,12 +6,17 @@
         <title>Inicio - Animali</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
             body {
+                display: flex;
+                flex-direction: column;
                 background-color: #b3d9e8;
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
-                margin: 0;
-                padding: 0;
             }
             .navbar {
                 background-color: #b3d9e8;
@@ -29,14 +34,17 @@
                 color: #000;
                 font-weight: bold;
             }
+            .container {
+                flex: 1;
+            }
             footer {
                 background-color: darkblue;
                 color: #fff;
                 text-align: center;
                 padding: 10px;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
+            }
+            #filterForm {
+                margin-top: 20px;
             }
         </style>
     </head>
@@ -47,7 +55,6 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-<!--//            falta mejorar-->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -73,15 +80,15 @@
             </div>
 
             <div id="filterForm" style="display: none;">
-                <form>
+                <form action="/busqueda.html" method="get">
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputAge">Edad</label>
-                            <input type="number" class="form-control" id="inputAge" placeholder="Edad" min="0">
+                            <input type="number" class="form-control" id="inputAge" name="edad" placeholder="Edad" min="0">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputHealth">Estado de Salud</label>
-                            <select class="form-control" id="inputHealth">
+                            <select class="form-control" id="inputHealth" name="salud">
                                 <option value="">Seleccionar...</option>
                                 <option value="saludable">Saludable</option>
                                 <option value="enfermo">Enfermo</option>
@@ -90,7 +97,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputLocation">Ubicación</label>
-                            <select class="form-control" id="inputLocation">
+                            <select class="form-control" id="inputLocation" name="ubicacion">
                                 <option value="">Seleccionar...</option>
                                 <option value="San José">San José</option>
                                 <option value="Alajuela">Alajuela</option>
@@ -105,7 +112,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCondition">Condición de Hogar</label>
-                            <select class="form-control" id="inputCondition">
+                            <select class="form-control" id="inputCondition" name="condicion">
                                 <option value="">Seleccionar...</option>
                                 <option value="callejero">Callejero</option>
                                 <option value="casa cuna">Casa Cuna</option>
@@ -113,7 +120,7 @@
                             </select>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="redirectToPublications()">Buscar</button>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
             </div>
 
@@ -147,15 +154,15 @@
             <div class="row mt-4">
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="img/contactanos.jpg" class="card-img-top" alt="Contactanos">
+                        <img src="Images/contactanos.png" class="card-img-top" alt="Contactanos">
                         <div class="card-body text-center">
                             <a href="contactanos.html" class="card-link">Contactanos</a>
                         </div>
-                    </div>
-                </div>
+                    </div> 
+                </div> 
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="img/donaciones.jpg" class="card-img-top" alt="Donaciones">
+                        <img src="Images/donaciones.png" class="card-img-top" alt="Donaciones">
                         <div class="card-body text-center">
                             <a href="donaciones.html" class="card-link">Donaciones</a>
                         </div>
@@ -163,23 +170,23 @@
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="img/experiencias.jpg" class="card-img-top" alt="Experiencias">
+                        <img src="Images/experiencias.png" class="card-img-top" alt="Experiencias">
                         <div class="card-body text-center">
                             <a href="/experiencias.html" class="card-link">Experiencias</a>
-                        </div>
-                    </div>
+                        </div> 
+                    </div> 
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-4"> 
                     <div class="card">
-                        <img src="img/publicaciones.jpg" class="card-img-top" alt="Publicaciones">
+                        <img src="Images/publicaciones.png" class="card-img-top" alt="Publicaciones">
                         <div class="card-body text-center">
-                            <a href="publicaciones.html" class="card-link">Publicaciones</a>
+                            <a href="publicaciones.html" class="card-link">Mis publicaciones</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mb-4">
+                </div> 
+                <div class="col-md-3 mb-4"> 
                     <div class="card">
-                        <img src="img/subscripciones.jpg" class="card-img-top" alt="subscripciones">
+                        <img src="Images/subscripciones.png" class="card-img-top" alt="subscripciones">
                         <div class="card-body text-center">
                             <a href="/subscriptions/create" class="card-link">Subscripciones</a>
                         </div>
@@ -196,14 +203,27 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            var suscripcion = localStorage.getItem('suscripcion');
-                            if (suscripcion) {
-                                var subscriptionBadge = document.getElementById('subscriptionBadge');
-                                subscriptionBadge.innerText = 'Suscripción: ' + suscripcion;
-                                subscriptionBadge.style.display = 'block';
-                            }
-                        });
+            document.addEventListener('DOMContentLoaded', function () {
+                var suscripcion = localStorage.getItem('suscripcion');
+                if (suscripcion) {
+                    var subscriptionBadge = document.getElementById('subscriptionBadge');
+                    subscriptionBadge.innerText = 'Suscripción: ' + suscripcion;
+                    subscriptionBadge.style.display = 'block';
+                }
+
+                var showFiltersButton = document.getElementById('showFilters');
+                var filterForm = document.getElementById('filterForm');
+
+                showFiltersButton.addEventListener('click', function () {
+                    if (filterForm.style.display === 'none' || filterForm.style.display === '') {
+                        filterForm.style.display = 'block';
+                        showFiltersButton.innerText = 'Ocultar filtros de búsqueda';
+                    } else {
+                        filterForm.style.display = 'none';
+                        showFiltersButton.innerText = 'Ver filtros de búsqueda';
+                    }
+                });
+            });
         </script>
     </body>
 </html>

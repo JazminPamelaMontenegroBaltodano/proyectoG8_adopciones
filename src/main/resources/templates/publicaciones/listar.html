@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Publicaciones - Animali</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #b3d9e8;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                background-color: #e6f5fa;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                margin-top: 40px;
+            }
+            h5.card-title {
+                color: #333;
+                font-weight: bold;
+            }
+            .card {
+                border: none;
+                border-radius: 15px;
+                background-color: #e6f5fa;
+                margin-bottom: 20px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            .card img {
+                border-radius: 15px 15px 0 0;
+                height: 270px;
+                width: 100%;
+                object-fit: cover;
+            }
+            .card-body {
+                padding: 20px;
+            }
+            .btn {
+                width: 100px;
+            }
+            .btn-warning {
+                background-color: #ffc107;
+                border-color: #ffc107;
+            }
+            .btn-danger {
+                background-color: #dc3545;
+                border-color: #dc3545;
+            }
+            .btn-success {
+                background-color: #28a745;
+                border-color: #28a745;
+            }
+            .text-right {
+                text-align: right;
+            }
+            .mt-3 {
+                margin-top: 1rem;
+            }
+            .mb-4 {
+                margin-bottom: 1.5rem;
+            }
+            .mt-4 {
+                margin-top: 1.5rem;
+            }
+        </style>
+    </head>
+    <body class="publicacion">
+
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <a href="/publicaciones/crear" class="btn btn-success mb-4">Agregar Nueva Publicación</a>
+                </div>
+            </div>
+
+            <div class="row mt-4" th:each="publicacion : ${publicaciones}">
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <img th:src="@{'/Images/' + ${publicacion.id} + '.jpg'}" class="card-img-top" alt="Publicacion">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" th:text="${publicacion.titulo}">Título de la Publicación</h5>
+                            <p class="card-text" th:text="${publicacion.descripcion}">Descripción de la publicación...</p>
+                            <div class="action-buttons mt-3">
+                                <a th:href="@{/publicaciones/editar/{id}(id=${publicacion.id})}" class="btn btn-warning">Editar</a>
+                                <a th:href="@{/publicaciones/eliminar/{id}(id=${publicacion.id})}" class="btn btn-danger">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

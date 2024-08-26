@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Comentario</title>
+</head>
+<body>
+    <h1>Agregar Comentario</h1>
+    <form action="/comentarios/guardar" method="post" th:object="${comentario}">
+        <label for="contenido">Contenido:</label>
+        <textarea id="contenido" name="contenido" th:field="*{contenido}" required></textarea>
+        <br>
+        <label for="usuario">ID Usuario:</label>
+        <input type="text" id="usuario" name="usuario" th:field="*{usuario.id}" required>
+        <br>
+        <label for="publicacion">ID Publicación:</label>
+        <input type="text" id="publicacion" name="publicacion" th:field="*{publicacion.id}" required>
+        <br>
+        <label for="fechaComentario">Fecha Comentario:</label>
+        <input type="datetime-local" id="fechaComentario" name="fechaComentario" th:field="*{fechaComentario}">
+        <br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Publicaciones - Animali</title>
+        <title>Busqueda - Animali</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {
@@ -47,11 +47,6 @@
                 text-align: justify;
                 margin-bottom: 10px;
             }
-            .likes {
-                font-size: 14px;
-                color: #666;
-                text-align: right;
-            }
             .seller-info {
                 font-size: 14px;
                 color: #666;
@@ -67,7 +62,7 @@
                 width: 100%;
             }
             .container {
-                margin-bottom: 80px; /* Asegura que el contenido no quede detrás del footer */
+                margin-bottom: 80px;
             }
             .action-buttons {
                 text-align: center;
@@ -141,18 +136,12 @@
         </nav>
 
         <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-12 text-right">
-                    <a href="/publicaciones/crear" class="btn btn-success mb-4">Agregar Nueva Publicación</a>
-                </div>
-            </div>
-
             <div class="row mt-4">
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <img src="Images/rescate1.jpg" class="card-img-top" alt="Publicacion 1">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Rescatamos a Callejero</h5>
+                            <h5 class="card-title">Conoce a Callejero</h5>
                             <p class="card-text">
                                 Callejero fue encontrado en un estado deplorable y abandonado. Encontró fuerzas y siguió adelante, Callejero recibió con mucha paciencia sus tratamientos y se pudo curar del todo. Ahora, es un perrito feliz y sin preocupaciones!!
                             </p>
@@ -167,10 +156,6 @@
                             <p class="card-text"><strong>Ubicación:</strong> San Sebastián, San José</p>
                             <p class="card-text"><strong>Condición de hogar:</strong> En Adopción</p>
 
-                            <div class="action-buttons mt-3">
-                                <a href="/publicaciones/editar" class="btn btn-warning">Editar</a>
-                                <a href="/publicaciones/eliminar" class="btn btn-danger">Eliminar</a>
-                            </div>
                             <div class="seller-info" id="seller-info-1">
                                 <p><strong>INFORMACIÓN:</strong></p>
                                 <p><strong>Nombre:</strong> Juan Pérez</p>

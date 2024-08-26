@@ -3,15 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contacto - Animali</title>
+        <title>Donación Exitosa - Animali</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
             body {
+                display: flex;
+                flex-direction: column;
                 background-color: #b3d9e8;
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
-                margin: 0;
-                padding: 0;
             }
             .navbar {
                 background-color: #b3d9e8;
@@ -19,21 +24,25 @@
             .navbar-brand, .navbar-nav .nav-link {
                 color: #000;
             }
+            .container {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
             .card {
                 border: none;
                 border-radius: 15px;
                 background-color: #e6f5fa;
-            }
-            .card img {
-                border-radius: 15px;
+                margin-bottom: 20px;
+                padding: 20px;
             }
             footer {
                 background-color: darkblue;
                 color: #fff;
                 text-align: center;
                 padding: 10px;
-                position: fixed;
-                bottom: 0;
                 width: 100%;
             }
         </style>
@@ -57,27 +66,16 @@
             </div>
         </nav>
 
-        <div class="container mt-4">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Contactanos</h5>
-                            <p class="card-text">Puedes contactarnos directamente por teléfono, correo electrónico o a través de nuestras redes sociales.</p>
-                            <ul class="list-unstyled">
-                                <li><strong>Teléfono:</strong> +506 1234 5678</li>
-                                <li><strong>Correo electrónico:</strong> contacto@animali.com</li>
-                                <li>
-                                    <strong>Redes Sociales:</strong>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="https://www.facebook.com/?locale=es_LA" target="_blank">Facebook</a></li>
-                                        <li class="list-inline-item"><a href="https://x.com/?lang=es" target="_blank">Twitter</a></li>
-                                        <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">¡Gracias por tu Donación!</h2>
+                    <p class="card-text">
+                        Tu aporte ha sido exitosamente procesado. Gracias a ti, podemos continuar brindando apoyo y cuidado a los animales que más lo necesitan.
+                        <br><br>
+                        ¡Tu generosidad hace una gran diferencia!
+                    </p>
+                    <a href="index.html" class="btn btn-primary mt-3">Volver al Inicio</a>
                 </div>
             </div>
         </div>

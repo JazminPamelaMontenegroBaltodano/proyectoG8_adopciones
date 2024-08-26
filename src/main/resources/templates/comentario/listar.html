@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Comentarios</title>
+</head>
+<body>
+    <h1>Comentarios</h1>
+    <a href="/comentarios/crear">Agregar Nuevo Comentario</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Contenido</th>
+                <th>ID Usuario</th>
+                <th>ID Publicación</th>
+                <th>Fecha Comentario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="comentario : ${comentarios}">
+                <td th:text="${comentario.id}"></td>
+                <td th:text="${comentario.contenido}"></td>
+                <td th:text="${comentario.usuario.id}"></td>
+                <td th:text="${comentario.publicacion.id}"></td>
+                <td th:text="${comentario.fechaComentario}"></td>
+                <td>
+                    <a th:href="@{/comentarios/editar/{id}(id=${comentario.id})}">Editar</a>
+                    <a th:href="@{/comentarios/eliminar/{id}(id=${comentario.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

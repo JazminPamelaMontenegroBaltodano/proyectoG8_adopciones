@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Mascota</title>
+</head>
+<body>
+    <h1>Crear Mascota</h1>
+    <form action="/mascotas/guardar" method="post" th:object="${mascota}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>
+        <br>
+        <label for="raza">Raza:</label>
+        <input type="text" id="raza" name="raza" th:field="*{raza}">
+        <br>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" th:field="*{edad}">
+        <br>
+        <label for="condicionSalud">Condición de Salud:</label>
+        <input type="text" id="condicionSalud" name="condicionSalud" th:field="*{condicionSalud}">
+        <br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

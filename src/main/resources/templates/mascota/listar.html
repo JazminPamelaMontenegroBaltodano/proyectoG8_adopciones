@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Mascotas</title>
+</head>
+<body>
+    <h1>Mascotas</h1>
+    <a href="/mascotas/crear">Crear Nueva Mascota</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Condición de Salud</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mascota : ${mascotas}">
+                <td th:text="${mascota.id}"></td>
+                <td th:text="${mascota.nombre}"></td>
+                <td th:text="${mascota.raza}"></td>
+                <td th:text="${mascota.edad}"></td>
+                <td th:text="${mascota.condicionSalud}"></td>
+                <td>
+                    <a th:href="@{/mascotas/editar/{id}(id=${mascota.id})}">Editar</a>
+                    <a th:href="@{/mascotas/eliminar/{id}(id=${mascota.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
