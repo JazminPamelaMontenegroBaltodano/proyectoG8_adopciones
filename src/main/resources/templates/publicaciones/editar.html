@@ -1,66 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Editar Publicación</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            body {
-                background-color: #b3d9e8;
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                margin: 0;
-                padding: 0;
-            }
-            .container {
-                background-color: #e6f5fa;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                margin-top: 40px;
-            }
-            h2 {
-                text-align: center;
-                margin-bottom: 20px;
-                color: #333;
-            }
-            .form-group label {
-                font-weight: bold;
-                color: #333;
-            }
-            .btn-primary {
-                background-color: #007bff;
-                border-color: #007bff;
-            }
-            .btn-secondary {
-                background-color: #6c757d;
-                border-color: #6c757d;
-            }
-            .btn {
-                width: 100px;
-            }
-        </style>
-    </head>
-    <body>
-
-        <div class="container">
-            <h2>Editar Publicación</h2>
-            <form action="/publicaciones/actualizar/{id}" method="post" th:object="${publicacion}">
-                <div class="form-group">
-                    <label for="titulo">Título:</label>
-                    <input type="text" id="titulo" name="titulo" th:field="*{titulo}" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" th:field="*{descripcion}" class="form-control" required></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <a href="/publicaciones" class="btn btn-secondary">Cancelar</a>
-                </div>
-            </form>
-        </div>
-
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Publicación</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Editar Publicación</h1>
+        <form action="/publicaciones/actualizar" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" th:value="${publicacion.id}">
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" class="form-control" name="titulo" th:value="${publicacion.titulo}" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" name="descripcion" rows="3" required th:text="${publicacion.descripcion}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input type="number" class="form-control" name="edad" th:value="${publicacion.edad}" required>
+            </div>
+            <div class="form-group">
+                <label for="imagenFile">Imagen</label>
+                <input type="file" class="form-control-file" name="imagenFile">
+                <img th:src="@{${publicacion.imagenPath}}" alt="Imagen de la Publicación" class="img-fluid mt-2">
+            </div>
+            <div class="form-group">
+                <label for="videoFile">Video</label>
+                <input type="file" class="form-control-file" name="videoFile">
+                <video th:src="@{${publicacion.videoPath}}" controls class="img-fluid mt-2"></video>
+            </div>
+<!--            /*<div class="form-group">
+                <label for="uploadDir">Directorio de almacenamiento (opcional)</label>
+                <input type="text" class="form-control" name="uploadDir" placeholder="Ejemplo: C:/ruta/personalizada/">
+            </div>-->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="/publicaciones/listar" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
 </html>

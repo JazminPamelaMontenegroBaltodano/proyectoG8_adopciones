@@ -1,36 +1,70 @@
 package com.adopcion.serviceImpl;
 
-import com.adopcion.dao.PublicacionRepository;
 import com.adopcion.domain.Publicacion;
 import com.adopcion.service.PublicacionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class PublicacionServiceImpl implements PublicacionService {
 
-    @Autowired
-    private PublicacionRepository publicacionRepository;
+    private List<Publicacion> publicaciones = new ArrayList<>();
+    private Long nextId = 1L;
 
     @Override
-    public List<Publicacion> listarTodas() {
-        return publicacionRepository.findAll();
+    public List<Publicacion> listarPublicaciones() {
+        return new ArrayList<>(publicaciones);
     }
 
     @Override
-    public Publicacion guardar(Publicacion publicacion) {
-        return publicacionRepository.save(publicacion);
+    public void crearPublicacion(Publicacion publicacion) {
+        publicacion.setId(nextId++);
+        publicaciones.add(publicacion);
     }
 
     @Override
-    public Publicacion obtenerPorId(Long id) {
-        return publicacionRepository.findById(id).orElse(null);
+    public Publicacion obtenerPublicacionPorId(Long id) {
+        return publicaciones.stream()
+                .filter(pub -> pub.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
-    public void eliminar(Long id) {
-        publicacionRepository.deleteById(id);
+    public void actualizarPublicacion(Publicacion publicacion) {
+        publicaciones = publicaciones.stream()
+                .map(pub -> pub.getId().equals(publicacion.getId()) ? publicacion : pub)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void eliminarPublicacion(Long id) {
+        publicaciones.removeIf(pub -> pub.getId().equals(id));
+    }
+// Lógica para actualizar imagen y video
+    // Lógica para guardar nueva imagen y actualizar imagenPath
+    // Lógica para guardar nuevo video y actualizar videoPath
+
+    @Override
+    public void actualizarPublicacion(Publicacion publicacion, MultipartFile imagenFile, MultipartFile videoFile) {
+        publicaciones = publicaciones.stream()
+                .map(pub -> {
+                    if (pub.getId().equals(publicacion.getId())) {
+
+                        if (!imagenFile.isEmpty()) {
+
+                        }
+                        if (!videoFile.isEmpty()) {
+
+                        }
+                        return publicacion;
+                    }
+                    return pub;
+                })
+                .collect(Collectors.toList());
     }
 }

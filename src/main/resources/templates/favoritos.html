@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Favoritos</title>
+</head>
+<body>
+    <h1>Publicaciones Favoritas</h1>
+    <ul>
+        <li th:each="favorito : ${favoritos}">
+            <h2 th:text="${favorito.publicacion.nombreAnimal}"></h2>
+            <p th:text="${favorito.publicacion.raza}"></p>
+            <p th:text="${favorito.publicacion.edad}"></p>
+            <!-- Puedes agregar más detalles según lo necesites -->
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.adopcion.serviceImpl;
 
 import com.adopcion.dao.UserRepository;
+import com.adopcion.domain.Publicacion;
 import com.adopcion.domain.User;
 import com.adopcion.service.UserService;
 import org.mindrot.jbcrypt.BCrypt;
@@ -34,4 +35,11 @@ public class UserServiceImpl implements UserService {
         }
         return Optional.empty();
     }
+
+    @Override
+    public User obtenerUsuarioPorId(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    
 }

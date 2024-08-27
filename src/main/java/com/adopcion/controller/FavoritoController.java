@@ -1,7 +1,9 @@
 package com.adopcion.controller;
 
 import com.adopcion.domain.Favorito;
+import com.adopcion.domain.Publicacion;
 import com.adopcion.service.FavoritoService;
+import com.adopcion.service.PublicacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,42 +18,35 @@ public class FavoritoController {
     @Autowired
     private FavoritoService favoritoService;
 
-    @GetMapping
+    @Autowired
+    private PublicacionService publicacionService;
+
+    @GetMapping("/listar")
     public String listarFavoritos(Model model) {
-        List<Favorito> favoritos = favoritoService.listarTodos();
+        List<Favorito> favoritos = favoritoService.listarFavoritos();
         model.addAttribute("favoritos", favoritos);
         return "favoritos/listar";
     }
 
-    @GetMapping("/crear")
-    public String crearFavoritoForm(Model model) {
-        model.addAttribute("favorito", new Favorito());
-        return "favoritos/crear";
-    }
-
     @PostMapping("/guardar")
-    public String guardarFavorito(@ModelAttribute Favorito favorito) {
-        favoritoService.guardar(favorito);
-        return "redirect:/favoritos";
+    public String guardarFavorito(@RequestParam Long publicacionId) {
+        Publicacion publicacion = publicacionService.obtenerPublicacionPorId(publicacionId);
+
+        if (publicacion != null) {
+            Favorito favoritoExistente = favoritoService.obtenerPorPublicacion(publicacion);
+            if (favoritoExistente == null) {
+                Favorito favorito = new Favorito();
+                favorito.setPublicacion(publicacion);
+                favoritoService.guardarFavorito(favorito);
+            }
+        }
+
+        return "redirect:/publicaciones/listar";
     }
 
-    @GetMapping("/editar/{id}")
-    public String editarFavoritoForm(@PathVariable Long id, Model model) {
-        Favorito favorito = favoritoService.obtenerPorId(id);
-        model.addAttribute("favorito", favorito);
-        return "favoritos/editar";
-    }
-
-    @PostMapping("/actualizar/{id}")
-    public String actualizarFavorito(@PathVariable Long id, @ModelAttribute Favorito favorito) {
-        favorito.setId(id);
-        favoritoService.guardar(favorito);
-        return "redirect:/favoritos";
-    }
-
-    @GetMapping("/eliminar/{id}")
-    public String eliminarFavorito(@PathVariable Long id) {
-        favoritoService.eliminar(id);
-        return "redirect:/favoritos";
+    @PostMapping("/eliminar")
+    public String eliminarFavorito(@RequestParam Long favoritoId) {
+        favoritoService.eliminarFavorito(favoritoId);
+        return "redirect:/favoritos/listar";
     }
 }

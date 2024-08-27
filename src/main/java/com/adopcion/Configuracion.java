@@ -1,13 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.adopcion;
 
-/**
- *
- * @author pamel
- */
+import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+@Component
 public class Configuracion {
-    
+
+    private static final String UPLOADED_FOLDER = "C:/ruta/de/almacenamiento/";
+
+    @PostConstruct
+    public void init() {
+        try {
+            // Para Crear la carpeta de almacenamiento si no existe
+            //NOOO BORRAR
+            Files.createDirectories(Paths.get(UPLOADED_FOLDER));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

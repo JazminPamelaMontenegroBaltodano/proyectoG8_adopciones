@@ -2,6 +2,7 @@ package com.adopcion.serviceImpl;
 
 import com.adopcion.dao.FavoritoRepository;
 import com.adopcion.domain.Favorito;
+import com.adopcion.domain.Publicacion;
 import com.adopcion.service.FavoritoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,22 +16,22 @@ public class FavoritoServiceImpl implements FavoritoService {
     private FavoritoRepository favoritoRepository;
 
     @Override
-    public List<Favorito> listarTodos() {
+    public List<Favorito> listarFavoritos() {
         return favoritoRepository.findAll();
     }
 
     @Override
-    public Favorito guardar(Favorito favorito) {
+    public Favorito guardarFavorito(Favorito favorito) {
         return favoritoRepository.save(favorito);
     }
 
     @Override
-    public Favorito obtenerPorId(Long id) {
-        return favoritoRepository.findById(id).orElse(null);
+    public void eliminarFavorito(Long id) {
+        favoritoRepository.deleteById(id);
     }
 
     @Override
-    public void eliminar(Long id) {
-        favoritoRepository.deleteById(id);
+    public Favorito obtenerPorPublicacion(Publicacion publicacion) {
+        return (Favorito) favoritoRepository.findByPublicacion(publicacion);
     }
 }

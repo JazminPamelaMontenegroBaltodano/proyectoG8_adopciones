@@ -1,11 +1,7 @@
 package com.adopcion.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -24,7 +20,15 @@ public class User {
     private String email;
     private String password;
 
+    @ManyToMany
+    @JoinTable(
+        name = "user_favoritos", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "publicacion_id")
+    )
+    private List<Publicacion> publicacionesFavoritas;
 
+    // Constructor
     public User() {
     }
 
@@ -75,5 +79,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Publicacion> getPublicacionesFavoritas() {
+        return publicacionesFavoritas;
+    }
+
+    public void setPublicacionesFavoritas(List<Publicacion> publicacionesFavoritas) {
+        this.publicacionesFavoritas = publicacionesFavoritas;
     }
 }

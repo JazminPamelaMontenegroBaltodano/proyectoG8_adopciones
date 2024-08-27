@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Favoritos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Mis Favoritos</h1>
+        <ul class="list-group">
+            <th:block th:each="favorito : ${favoritos}">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img th:src="@{${favorito.publicacion.imagenPath}}" alt="Imagen de la Publicación" class="img-fluid">
+                        </div>
+                        <div class="col-md-9">
+                            <h5 th:text="${favorito.publicacion.titulo}">Título</h5>
+                            <p th:text="${favorito.publicacion.descripcion}">Descripción</p>
+                            <p><strong>Edad:</strong> <span th:text="${favorito.publicacion.edad}">0</span> años</p>
+                            <p><strong>Likes:</strong> <span th:text="${favorito.publicacion.likes}">0</span></p>
+                        </div>
+                    </div>
+                </li>
+            </th:block>
+        </ul>
+    </div>
+</body>
+</html>

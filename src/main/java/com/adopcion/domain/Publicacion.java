@@ -4,9 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import java.sql.Timestamp;
 
 @Entity
 public class Publicacion {
@@ -17,15 +14,13 @@ public class Publicacion {
 
     private String titulo;
     private String descripcion;
-    private Timestamp fechaPublicacion;
+    private Integer edad;
+    private Integer likes = 0;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private String imagenPath; 
+    private String videoPath;  
 
-    @ManyToOne
-    @JoinColumn(name = "mascota_id")
-    private Mascota mascota;
+    
 
     public Long getId() {
         return id;
@@ -51,27 +46,38 @@ public class Publicacion {
         this.descripcion = descripcion;
     }
 
-    public Timestamp getFechaPublicacion() {
-        return fechaPublicacion;
+    public Integer getEdad() {
+        return edad;
     }
 
-    public void setFechaPublicacion(Timestamp fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Integer getLikes() {
+        return likes;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setLikes(Integer likes) {
+        this.likes = likes;
     }
 
-    public Mascota getMascota() {
-        return mascota;
+    public String getImagenPath() {
+        return imagenPath;
     }
 
-    public void setMascota(Mascota mascota) {
-        this.mascota = mascota;
+    public void setImagenPath(String imagenPath) {
+        this.imagenPath = imagenPath;
+    }
+
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
+    }
+    public void incrementarLikes() {
+    this.likes++;
     }
 }

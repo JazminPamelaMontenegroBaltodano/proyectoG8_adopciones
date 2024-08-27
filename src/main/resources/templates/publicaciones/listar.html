@@ -1,99 +1,146 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Publicaciones - Animali</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <title>Mis Publicaciones</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
             body {
-                background-color: #b3d9e8;
+                background-color: #e3f2fd; 
                 font-family: Arial, sans-serif;
-                line-height: 1.6;
-                margin: 0;
-                padding: 0;
             }
             .container {
-                background-color: #e6f5fa;
+                background-color: white;
                 padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                margin-top: 40px;
-            }
-            h5.card-title {
-                color: #333;
-                font-weight: bold;
-            }
-            .card {
-                border: none;
                 border-radius: 15px;
-                background-color: #e6f5fa;
-                margin-bottom: 20px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+                margin-top: 50px;
             }
-            .card img {
-                border-radius: 15px 15px 0 0;
-                height: 270px;
-                width: 100%;
-                object-fit: cover;
+            .btn-primary {
+                background-color: #0d47a1;
+                border-color: #0d47a1;
             }
-            .card-body {
-                padding: 20px;
+            .btn-primary:hover {
+                background-color: #1565c0;
+                border-color: #1565c0;
             }
-            .btn {
-                width: 100px;
+            .list-group-item {
+                border: 1px solid #bbdefb;
+                border-radius: 15px;
+                margin-bottom: 15px;
             }
-            .btn-warning {
-                background-color: #ffc107;
-                border-color: #ffc107;
-            }
-            .btn-danger {
-                background-color: #dc3545;
-                border-color: #dc3545;
-            }
-            .btn-success {
-                background-color: #28a745;
-                border-color: #28a745;
-            }
-            .text-right {
-                text-align: right;
-            }
-            .mt-3 {
-                margin-top: 1rem;
-            }
-            .mb-4 {
-                margin-bottom: 1.5rem;
-            }
-            .mt-4 {
-                margin-top: 1.5rem;
+            .img-fluid {
+                border-radius: 15px;
             }
         </style>
     </head>
-    <body class="publicacion">
+    <body>
+        <a class="navbar-brand" href="/index.html">Animali</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="registro.html">Registrarme</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="inicio_sesion.html">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <<a href="/favoritos" class="card-link"> VerFavoritos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container mt-5">
+            <h1 class="text-center">Mis Publicaciones</h1>
+            <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearModal">Agregar Publicación</button>
 
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-12 text-right">
-                    <a href="/publicaciones/crear" class="btn btn-success mb-4">Agregar Nueva Publicación</a>
-                </div>
-            </div>
+            <ul class="list-group">
+                <th:block th:each="publicacion : ${publicaciones}">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img th:src="@{${publicacion.imagenPath}}" alt="Imagen de la Publicación" class="img-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <h5 th:text="${publicacion.titulo}">Título</h5>
+                                <p th:text="${publicacion.descripcion}">Descripción</p>
+                                <p><strong>Edad:</strong> <span th:text="${publicacion.edad}">0</span> años</p>
+                                <p><strong>Likes:</strong> <span th:text="${publicacion.likes}">0</span></p>
 
-            <div class="row mt-4" th:each="publicacion : ${publicaciones}">
-                <div class="col-md-12 mb-4">
-                    <div class="card">
-                        <img th:src="@{'/Images/' + ${publicacion.id} + '.jpg'}" class="card-img-top" alt="Publicacion">
-                        <div class="card-body text-center">
-                            <h5 class="card-title" th:text="${publicacion.titulo}">Título de la Publicación</h5>
-                            <p class="card-text" th:text="${publicacion.descripcion}">Descripción de la publicación...</p>
-                            <div class="action-buttons mt-3">
-                                <a th:href="@{/publicaciones/editar/{id}(id=${publicacion.id})}" class="btn btn-warning">Editar</a>
-                                <a th:href="@{/publicaciones/eliminar/{id}(id=${publicacion.id})}" class="btn btn-danger">Eliminar</a>
+                                <!-- Botones de acción -->
+                                <div>
+                                    <a th:href="@{/publicaciones/editar/{id}(id=${publicacion.id})}" class="btn btn-warning">Editar</a>
+                                    <form th:action="@{/publicaciones/eliminar/{id}(id=${publicacion.id})}" method="post" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+
+                                    <!-- Bloque de Favoritos comentado para después -->
+                                    <!--
+                                    <form th:if="${favoritoService.obtenerPorPublicacion(publicacion) == null}" th:action="@{/favoritos/guardar}" method="post" style="display:inline;">
+                                        <input type="hidden" name="publicacionId" th:value="${publicacion.id}"/>
+                                        <button type="submit" class="btn btn-outline-primary">Añadir a Favoritos</button>
+                                    </form>
+                                    <form th:if="${favoritoService.obtenerPorPublicacion(publicacion) != null}" th:action="@{/favoritos/eliminar}" method="post" style="display:inline;">
+                                        <input type="hidden" name="favoritoId" th:value="${favoritoService.obtenerPorPublicacion(publicacion).id}"/>
+                                        <button type="submit" class="btn btn-outline-danger">Eliminar de Favoritos</button>
+                                    </form>
+                                    -->
+                                </div>
                             </div>
                         </div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="crearModal" tabindex="-1" role="dialog" aria-labelledby="crearModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="crearModalLabel">Nueva Publicación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <form action="/publicaciones/crear" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="titulo">Título</label>
+                                <input type="text" class="form-control" name="titulo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control" name="descripcion" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="edad">Edad</label>
+                                <input type="number" class="form-control" name="edad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagenFile">Imagen</label>
+                                <input type="file" class="form-control-file" name="imagenFile">
+                            </div>
+                            <div class="form-group">
+                                <label for="videoFile">Video</label>
+                                <input type="file" class="form-control-file" name="videoFile">
+                            </div>
+<!--                            <div class="form-group">
+                                <label for="uploadDir">Directorio de almacenamiento (opcional)</label>
+                                <input type="text" class="form-control" name="uploadDir" placeholder="Ejemplo: C:/ruta/personalizada/">
+                            </div>-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
 
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
